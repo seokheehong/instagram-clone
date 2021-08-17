@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchUser } from '../redux/actions/index'
+import { fetchUser, fetchUserPosts } from '../redux/actions/index'
 import { View } from 'react-native'
 
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -22,6 +22,7 @@ const EmptyScreen = () => {
 export class Main extends Component {
     componentDidMount(){
         this.props.fetchUser();
+        this.props.fetchUserPosts();
         // calls actions/index.js, which calls dispatch, which calls Reducers, which updates the state of the currentUser within the action
     }
     render() {
@@ -60,6 +61,6 @@ export class Main extends Component {
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser
 })
-const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchProps)(Main);
