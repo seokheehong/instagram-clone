@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchUser, fetchUserPosts } from '../redux/actions/index'
-import { View } from 'react-native'
+import { fetchUser, fetchUserPosts, fetchUserFollowing } from '../redux/actions/index'
 import firebase from 'firebase'
 
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -25,6 +24,7 @@ export class Main extends Component {
     componentDidMount(){
         this.props.fetchUser();
         this.props.fetchUserPosts();
+        this.props.fetchUserFollowing();
         // calls actions/index.js, which calls dispatch, which calls Reducers, which updates the state of the currentUser within the action
     }
     render() {
@@ -76,6 +76,6 @@ export class Main extends Component {
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser
 })
-const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts}, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({ fetchUser, fetchUserPosts, fetchUserFollowing }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchProps)(Main);
