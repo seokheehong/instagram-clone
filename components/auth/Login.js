@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Button, Text, TextInput } from 'react-native'
+import { View, Button, Text, TextInput, StyleSheet } from 'react-native'
 
 import firebase from 'firebase'
 
@@ -54,3 +54,25 @@ export class Login extends Component {
 }
 
 export default Login
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    buttonContainer: {
+      flex: 1,
+      backgroundColor: 'transparent',
+      flexDirection: 'row',
+      margin: 20,
+    },
+    button: {
+      flex: 0.1,
+      alignSelf: 'flex-end',
+      alignItems: 'center',
+    },
+    text: {
+      fontSize: 18,
+      color: 'white',
+    },
+  });
+  
